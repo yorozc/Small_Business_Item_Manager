@@ -7,6 +7,8 @@ class ItemRepository:
         create_table() # creates inventory if it doesn't exist
 
     def add_item(self, item: InventoryItem):
+        # TODO: pass item to database
+        # TODO: add id to new item
         pass
 
     def del_from_db(self, item: InventoryItem):
