@@ -1,5 +1,6 @@
 from db.item_repo import ItemRepository
 from classes.inventory_item import InventoryItem
+import rich 
 
 item_repo = ItemRepository()
 
@@ -9,6 +10,7 @@ def run_tui():
         print("Select an operation: ")
         print("1. Add new item")
         # TODO: other operations
+        # TODO: use rich to make tui look nice
         user_inp = input("What operation would you like to perform: ")
 
         match user_inp:

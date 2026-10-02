@@ -2,6 +2,8 @@ from classes.inventory_item import InventoryItem
 from db.db_conn import create_table
 import sqlite3
 
+
+
 class ItemRepository:
     def __init__(self):
         create_table() # creates inventory if it doesn't exist
@@ -9,7 +11,14 @@ class ItemRepository:
     def add_item(self, item: InventoryItem):
         # TODO: pass item to database
         # TODO: add id to new item
-        pass
+        query = """
+
+                """
+        with sqlite3.connect("inventory.db") as conn:
+            c = conn.cursor()
+            c.execute(query, (item.name, item.price, item.quantity)) 
+            conn.commit()
+            conn.close()
 
     def del_from_db(self, item: InventoryItem):
         pass

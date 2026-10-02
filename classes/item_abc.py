@@ -7,7 +7,7 @@ class Item(ABC):
         self._name = name
         self._price = price
         self._quantity = quantity
-        self._description = description
+        self._description = description | None=None
 
     # TODO: create validation for attributes
 
@@ -44,8 +44,21 @@ class Item(ABC):
 
         self._price = price
 
-
     # quantity validation
+    @property
+    def quantity(self):
+        return self._quantity
+
+    @quantity.setter
+    def quantity(self, quantity):
+        if not isinstance(quantity, int):
+            raise TypeError("Quantity must be an int.")
+
+        if quantity < 0:
+            raise ValueError("Quantity cannot be negative.")
+
+        self._quantity = quantity
+
 
     # description validation
     
