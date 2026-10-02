@@ -11,6 +11,7 @@ class Item(ABC):
 
     # TODO: create validation for attributes
 
+    # name validation
     @property
     def name(self):
         return self._name
@@ -25,6 +26,7 @@ class Item(ABC):
 
         self._name = name.strip()
 
+    # price validation
     @property
     def price(self):
         return self._price
@@ -33,7 +35,7 @@ class Item(ABC):
     def price(self, price):
         if isinstance(price, int):
             price = float(price)
-            
+
         if not isinstance(price, float):
             raise TypeError("Price must be a float.")
 
@@ -41,4 +43,9 @@ class Item(ABC):
             raise ValueError("Price cannot be negative.")
 
         self._price = price
+
+
+    # quantity validation
+
+    # description validation
     
