@@ -9,4 +9,7 @@ class Item(ABC):
         self.quantity = quantity
         self.description = description
 
+    # TODO: create validation for attributes
+
+    
     

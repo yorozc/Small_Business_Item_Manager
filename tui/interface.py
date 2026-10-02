@@ -5,7 +5,6 @@ item_repo = ItemRepository()
 
 def run_tui():
     while True:
-
         print("Welcome to Item MGR")
         print("Select an operation: ")
         print("1. Add new item")
