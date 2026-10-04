@@ -2,14 +2,13 @@ from abc import ABC, abstractmethod
 
 class Item(ABC):
 
+    # TODO: add more attributes
     def __init__(self, name: str, price: float, quantity: int, description: str):
         self._id = None
         self._name = name
         self._price = price
         self._quantity = quantity
         self._description = description | None=None
-
-    # TODO: create validation for attributes
 
     # name validation
     @property
@@ -61,4 +60,11 @@ class Item(ABC):
 
 
     # description validation
+    @property
+    def description(self):
+        return self._description
     
+    @description.setter
+    def description(self, description):
+
+        self._description = description
