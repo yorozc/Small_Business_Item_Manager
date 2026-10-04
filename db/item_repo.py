@@ -21,6 +21,9 @@ class ItemRepository:
     def del_from_db(self, item: InventoryItem):
         pass
 
+    def edit_item(self, id):
+        pass
+
     def get_item(self, id: int):
         query = """
                 SELECT * FROM inventory WHERE id = ?;

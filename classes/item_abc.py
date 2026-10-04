@@ -5,10 +5,10 @@ class Item(ABC):
     # TODO: add more attributes
     def __init__(self, name: str, price: float, quantity: int, description: str | None = None):
         self._id = None
-        self._name = name
-        self._price = price
-        self._quantity = quantity
-        self._description = description
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+        self.description = description
 
     @property
     def id(self):
@@ -74,5 +74,7 @@ class Item(ABC):
     
     @description.setter
     def description(self, description):
-
+        if description is not None and not isinstance(description, str):
+            raise TypeError("Description must be a string or None")
+        
         self._description = description
