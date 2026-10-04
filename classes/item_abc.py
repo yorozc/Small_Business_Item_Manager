@@ -3,12 +3,20 @@ from abc import ABC, abstractmethod
 class Item(ABC):
 
     # TODO: add more attributes
-    def __init__(self, name: str, price: float, quantity: int, description: str):
+    def __init__(self, name: str, price: float, quantity: int, description: str | None = None):
         self._id = None
         self._name = name
         self._price = price
         self._quantity = quantity
-        self._description = description | None=None
+        self._description = description
+
+    @property
+    def id(self):
+        return self._id
+
+    @id.setter 
+    def id(self, _id):
+        self._id = _id
 
     # name validation
     @property

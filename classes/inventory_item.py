@@ -1,7 +1,7 @@
 from classes.item_abc import Item
 
 class InventoryItem(Item):
-    def __init__(self, name, price, quantity, description=""):
+    def __init__(self, name, price, quantity, description):
         super().__init__(name, price, quantity, description)
 
     def __repr__(self):
