@@ -4,32 +4,39 @@ import sqlite3
 
 class ItemRepository:
     def __init__(self):
-        create_table() # creates inventory table if it doesn't exist
+        # creates inventory table if it doesn't exist
+        create_table()
+        self._db = "inventory.db"
 
-    def add_item(self, item: InventoryItem):
-        # TODO: pass item to database
-        # TODO: add id to new item
+    def add_item(self, item: InventoryItem) -> None:
         query = """
                 INSERT INTO inventory (name, price, quantity, description) VALUES (?, ?, ?, ?)
                 """
-        with sqlite3.connect("inventory.db") as conn: # commits and closes 
+        with sqlite3.connect(self._db) as conn: # commits and closes 
             c = conn.cursor()
             c.execute(query, (item.name, item.price, item.quantity, item.description)) 
 
             item.id = c.lastrowid
 
-
     def del_from_db(self, item: InventoryItem):
         pass
 
     def get_item(self, id: int):
-        pass
+        query = """
+                SELECT * FROM inventory WHERE id = ?;
+                """
+        with sqlite3.connect(self._db) as conn:
+            c = conn.cursor()
+            c.execute(query, (id,))
 
-    def get_all_items(self):
+            data = c.fetchone()
+        return data
+
+    def get_all_items(self) -> list:
         query = """
                 SELECT * FROM inventory;
                 """
-        with sqlite3.connect("inventory.db") as conn:
+        with sqlite3.connect(self._db) as conn:
             c = conn.cursor()
             c.execute(query)
 

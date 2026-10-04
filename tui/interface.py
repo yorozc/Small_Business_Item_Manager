@@ -3,17 +3,23 @@ from classes.inventory_item import InventoryItem
 import rich 
 
 item_repo = ItemRepository()
-spacer = "-" * 10
+spacer = "-" * 50
+
+print("Welcome to Item MGR")
+
 def run_tui():
     while True:
-        print("Welcome to Item MGR")
         print("Select an operation: ")
         print("1. Add new item")
         print(spacer)
         print("2. Display all items")
+        print(spacer)
+        print("3. Display specific item via ID")
+        print(spacer)
         # TODO: other operations
         # TODO: use rich to make tui look nice
         user_inp = input("What operation would you like to perform: ")
+        print(spacer)
 
         match user_inp:
             case "1": # add to db
@@ -46,5 +52,19 @@ def run_tui():
                     print(f"Quantity: {item[3]}")
                     print(f"Description: {item[4]}")
                     print(spacer)
+
+            case "3": # get using id
+                id = int(input("Please enter id of item: "))
+                data = item_repo.get_item(id)
+                print(spacer)
+                print(f"ID: {data[0]}")
+                print(f"Name: {data[1]}")
+                print(f"Price: ${data[2]:.2f}")
+                print(f"Quantity: {data[3]}")
+                print(f"Description: {data[4]}")
+                print(spacer)
+
+            case "4":
+                pass
 
         
